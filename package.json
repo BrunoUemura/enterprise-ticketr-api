@@ -1,0 +1,37 @@
+{
+  "name": "ticketr-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/BrunoUemura/ticketr-backend.git",
+  "author": "BrunoUemura <bruno.h.uemura@outlook.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint . --ext .ts"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/module-alias": "^2.0.1",
+    "@types/morgan": "^1.9.3",
+    "@types/node": "^17.0.13",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "prisma": "^3.8.1",
+    "ts-node": "^10.4.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.5"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.8.1",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "module-alias": "^2.2.2",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.0.2"
+  }
+}
