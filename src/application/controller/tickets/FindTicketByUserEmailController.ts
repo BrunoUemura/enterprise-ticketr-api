@@ -1,3 +1,4 @@
+import FindTicketByUserEmailService from '@src/application/service/tickets/FindTicketByUserEmailService';
 import { Request, Response, NextFunction } from 'express';
 
 export default class FindTicketByUserEmailController {
@@ -7,6 +8,9 @@ export default class FindTicketByUserEmailController {
     next: NextFunction,
   ) {
     try {
+      const { email } = request.params;
+      const result = await FindTicketByUserEmailService.execute(email);
+      return response.json(result);
     } catch (err) {
       next(err);
     }

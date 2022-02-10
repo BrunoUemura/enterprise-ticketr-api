@@ -1,5 +1,5 @@
 export default class UserDTO {
-  type: string;
+  type?: string;
   id: string;
   name: string;
   email: string;
