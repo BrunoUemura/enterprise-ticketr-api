@@ -6,5 +6,5 @@ export default class TicketDTO {
   from_department: string;
   to_department: string;
   approved?: boolean;
-  status: string;
+  status?: string;
 }

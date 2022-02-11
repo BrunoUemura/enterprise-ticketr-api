@@ -1,4 +1,5 @@
 import '@src/config/env-config';
+import '@src/util/rabbitmq/RabbitmqConsumer';
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';

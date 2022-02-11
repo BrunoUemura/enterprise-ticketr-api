@@ -1,4 +1,5 @@
 import UpdateTicketService from '@src/application/service/tickets/UpdateTicketService';
+import AuthValidation from '@src/validation/AuthValidation';
 import { Request, Response, NextFunction } from 'express';
 
 export default class UpdateTicketController {
@@ -8,16 +9,27 @@ export default class UpdateTicketController {
     next: NextFunction,
   ) {
     try {
-      const { id } = request.params;
-      const { user_id, title, description, from, to, approved, status } =
-        request.body;
+      await AuthValidation.execute(request);
 
-      const result = await UpdateTicketService.execute(id, {
-        user_id,
+      const { id } = request.params;
+      const {
+        opened_by,
+        assigned_to,
         title,
         description,
-        from,
-        to,
+        from_department,
+        to_department,
+        approved,
+        status,
+      } = request.body;
+
+      const result = await UpdateTicketService.execute(id, {
+        opened_by,
+        assigned_to,
+        title,
+        description,
+        from_department,
+        to_department,
         approved,
         status,
       });

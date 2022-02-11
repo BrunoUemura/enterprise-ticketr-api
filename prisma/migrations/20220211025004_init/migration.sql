@@ -24,7 +24,7 @@ CREATE TABLE "ticket" (
     "status" TEXT NOT NULL DEFAULT 'awaiting approval',
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" DATETIME NOT NULL,
-    CONSTRAINT "ticket_opened_by_fkey" FOREIGN KEY ("opened_by") REFERENCES "user" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "ticket_opened_by_fkey" FOREIGN KEY ("opened_by") REFERENCES "user" ("email") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateIndex

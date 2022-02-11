@@ -1,4 +1,5 @@
 import CreateTicketService from '@src/application/service/tickets/CreateTicketService';
+import AuthValidation from '@src/validation/AuthValidation';
 import { Request, Response, NextFunction } from 'express';
 
 export default class CreateTicketController {
@@ -8,15 +9,10 @@ export default class CreateTicketController {
     next: NextFunction,
   ) {
     try {
-      const {
-        opened_by,
-        title,
-        description,
-        from_department,
-        to_department,
-        approved,
-        status,
-      } = request.body;
+      await AuthValidation.execute(request);
+
+      const { opened_by, title, description, from_department, to_department } =
+        request.body;
 
       const result = await CreateTicketService.execute({
         opened_by,
@@ -24,12 +20,12 @@ export default class CreateTicketController {
         description,
         from_department,
         to_department,
-        approved,
-        status,
       });
 
       return response.json(result);
     } catch (err) {
+      console.log(err);
+
       next(err);
     }
   }
