@@ -25,7 +25,6 @@ export default class CreateTicketController {
       return response.json(result);
     } catch (err) {
       console.log(err);
-
       next(err);
     }
   }

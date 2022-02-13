@@ -1,8 +1,8 @@
 export enum TicketStatus {
-  AWAITING_APPROVAL = 'awaiting approval',
-  OPEN = 'open',
-  IN_PROGRESS = 'in progress',
-  ON_HOLD = 'on hold',
-  SOLVED = 'solved',
-  CLOSED = 'closed',
+  AWAITING_APPROVAL = 'AWAITING APPROVAL',
+  OPEN = 'OPEN',
+  IN_PROGRESS = 'IN PROGRESS',
+  ON_HOLD = 'ON HOLD',
+  SOLVED = 'SOLVED',
+  CLOSED = 'CLOSED',
 }

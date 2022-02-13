@@ -6,6 +6,7 @@ import FindTicketByIdController from '@src/application/controller/tickets/FindTi
 import FindTicketByUserEmailController from '@src/application/controller/tickets/FindTicketByUserEmailController';
 import UpdateTicketController from '@src/application/controller/tickets/UpdateTicketController';
 import ApproveTicketController from '../controller/tickets/ApproveTicketController';
+import AssignTicketController from '../controller/tickets/AssignTicketController';
 
 const ticket = Router();
 
@@ -14,6 +15,7 @@ ticket.get('/id/:id', FindTicketByIdController.handle);
 ticket.get('/email/:email', FindTicketByUserEmailController.handle);
 ticket.post('/create', CreateTicketController.handle);
 ticket.patch('/approve/:id', ApproveTicketController.handle);
+ticket.patch('/assign-to/:id', AssignTicketController.handle);
 ticket.put('/update/:id', UpdateTicketController.handle);
 
 export default ticket;

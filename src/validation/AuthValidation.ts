@@ -28,7 +28,6 @@ export default class AuthValidation {
       jwt.verify(token, String(process.env.JWT_SECRET));
 
       const result = jwt.decode(token);
-      console.log(result);
 
       return;
     } catch (error) {
