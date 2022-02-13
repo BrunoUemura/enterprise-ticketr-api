@@ -22,6 +22,7 @@ model User {
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
   tickets     Ticket[]
+  comments     Comment[]
 
   @@map("user")
 }
@@ -37,9 +38,23 @@ model Ticket {
   to_department   String
   approver        String
   approved        Boolean @default(false)
-  status          String  @default("awaiting approval")
+  status          String
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  comments Comment[]
+
+  @@map("ticket")
+}
+
+model Comment {
+  id              String @id @default(uuid())
+  ticket Ticket @relation(fields: [ticket_id], references: [id])
+  ticket_id       String
+  user User @relation(fields: [user_id], references: [id])
+  user_id         String
+  content         String
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
 
-  @@map("ticket")
+  @@map("comment")
 }

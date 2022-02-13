@@ -3,6 +3,7 @@ import TicketDTO from '@src/application/dto/TicketDTO';
 import ticketRepository from '@src/application/repository/TicketRepository';
 import userRepository from '@src/application/repository/userRepository';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
+import { TicketStatus } from '@src/util/enum/TicketStatus';
 import NotFoundError from '@src/util/error/NotFoundError';
 
 export default class CreateTicketService {
@@ -24,6 +25,7 @@ export default class CreateTicketService {
         from_department: data.from_department,
         to_department: data.to_department,
         approver: user.manager,
+        status: TicketStatus.AWAITING_APPROVAL,
       },
     });
 
