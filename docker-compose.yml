@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  ticketr-db:
+    image: postgres
+    container_name: ticketr-db
+    environment:
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+      POSTGRES_DB: enterprise_ticketr
+    ports:
+      - '15432:5432'
+    volumes:
+      - ./data/pgdata_ticketr:/var/lib/postgresql/data
+
+  ticketr-service:
+    container_name: ticketr-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - 5002:5002

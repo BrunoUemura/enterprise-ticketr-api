@@ -1,10 +1,12 @@
 export default class Ticket {
   id: string;
-  user_id: string;
+  opened_by: string;
+  assigned_to: string;
   title: string;
   description: string;
-  from: string;
-  to: string;
+  from_department: number;
+  to_department: number;
+  approver: string;
   approved: boolean;
   status: string;
   created_at: Date;

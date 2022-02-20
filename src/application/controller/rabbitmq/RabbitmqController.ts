@@ -1,15 +1,14 @@
-import UserDTO from '@src/application/dto/UserDTO';
+import CreateUser from '@src/application/entity/CreateUser';
 import InsertUserService from '@src/application/service/users/InsertUserService';
 import UpdateUserService from '@src/application/service/users/UpdateUserService';
 
 export default class RabbitmqController {
-  static async handleEvent(message: UserDTO) {
+  static async handleEvent(message: CreateUser) {
     const user = {
       id: message.id,
       name: message.name,
       email: message.email,
-      role: message.role,
-      department: message.department,
+      department_id: message.department_id,
       manager: message.manager,
     };
 

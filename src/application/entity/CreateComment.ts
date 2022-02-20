@@ -1,4 +1,4 @@
-export default class CommentDTO {
+export default class CreateComment {
   user_id: string;
   content: string;
 }

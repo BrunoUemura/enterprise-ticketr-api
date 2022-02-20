@@ -1,16 +1,16 @@
-import DefaultResponseDTO from '@src/application/dto/DefaultResponseDTO';
-import userRepository from '@src/application/repository/userRepository';
+import DefaultResponse from '@src/application/entity/DefaultResponse';
+import userRepository from '@src/application/repository/UserRepository';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import NotFoundError from '@src/util/error/NotFoundError';
 import commentRepository from '@src/application/repository/CommentRepository';
-import TokenPayloadDTO from '@src/application/dto/TokenPayloadDTO';
+import TokenPayload from '@src/application/entity/TokenPayload';
 import BadRequestError from '@src/util/error/BadRequestError';
 
 export default class DeleteCommentService {
   static async execute(
     id: string,
-    token: TokenPayloadDTO,
-  ): Promise<DefaultResponseDTO> {
+    token: TokenPayload,
+  ): Promise<DefaultResponse> {
     const user = await userRepository.findFirst({
       where: {
         id: token.id,

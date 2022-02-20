@@ -1,4 +1,3 @@
-import TokenPayloadDTO from '@src/application/dto/TokenPayloadDTO';
 import AssignTicketService from '@src/application/service/tickets/AssignTicketService';
 import AuthValidation from '@src/validation/AuthValidation';
 import { Request, Response, NextFunction } from 'express';

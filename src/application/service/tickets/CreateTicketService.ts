@@ -1,13 +1,13 @@
-import DefaultResponseDTO from '@src/application/dto/DefaultResponseDTO';
-import TicketDTO from '@src/application/dto/TicketDTO';
+import DefaultResponseDTO from '@src/application/entity/DefaultResponse';
+import CreateTicket from '@src/application/entity/CreateTicket';
 import ticketRepository from '@src/application/repository/TicketRepository';
-import userRepository from '@src/application/repository/userRepository';
+import userRepository from '@src/application/repository/UserRepository';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import { TicketStatus } from '@src/util/enum/TicketStatus';
 import NotFoundError from '@src/util/error/NotFoundError';
 
 export default class CreateTicketService {
-  static async execute(data: TicketDTO): Promise<DefaultResponseDTO> {
+  static async execute(data: CreateTicket): Promise<DefaultResponseDTO> {
     const user = await userRepository.findFirst({
       where: {
         email: data.opened_by,

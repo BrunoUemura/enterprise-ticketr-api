@@ -1,14 +1,13 @@
-import TicketDTO from '@src/application/dto/TicketDTO';
-import TokenPayloadDTO from '@src/application/dto/TokenPayloadDTO';
+import TokenPayload from '@src/application/entity/TokenPayload';
 import ticketRepository from '@src/application/repository/TicketRepository';
-import userRepository from '@src/application/repository/userRepository';
+import userRepository from '@src/application/repository/UserRepository';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import { TicketStatus } from '@src/util/enum/TicketStatus';
 import BadRequestError from '@src/util/error/BadRequestError';
 import NotFoundError from '@src/util/error/NotFoundError';
 
 export default class ApproveTicketService {
-  static async execute(id: string, token: TokenPayloadDTO) {
+  static async execute(id: string, token: TokenPayload) {
     const user = await userRepository.findFirst({
       where: { id: token.id },
     });

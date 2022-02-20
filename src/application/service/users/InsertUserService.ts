@@ -1,11 +1,11 @@
 import BadRequestError from '@src/util/error/BadRequestError';
-import UserDTO from '@src/application/dto/UserDTO';
-import userRepository from '@src/application/repository/userRepository';
-import DefaultResponseDTO from '@src/application/dto/DefaultResponseDTO';
+import User from '@src/application/entity/CreateUser';
+import userRepository from '@src/application/repository/UserRepository';
+import DefaultResponse from '@src/application/entity/DefaultResponse';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 
 export default class InsertUserService {
-  static async execute(data: UserDTO): Promise<DefaultResponseDTO> {
+  static async execute(data: User): Promise<DefaultResponse> {
     const userExist = await userRepository.findFirst({
       where: {
         email: data.email,
@@ -19,8 +19,7 @@ export default class InsertUserService {
         id: data.id,
         name: data.name,
         email: data.email,
-        role: data.role,
-        department: data.department,
+        department_id: data.department_id,
         manager: data.manager,
       },
     });

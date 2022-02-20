@@ -2,7 +2,7 @@ import 'dotenv/config';
 import './util/module-alias';
 import server from '@src/config/server-config';
 
-const PORT = process.env.PORT || 5001;
+const PORT = process.env.PORT || 5002;
 
 server.listen(PORT, () => {
   console.log(`Auth API running on port ${PORT}`);

@@ -1,11 +1,6 @@
-// datasource db {
-//   provider = "postgresql"
-//   url      = env("DATABASE_URL")
-// }
-
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 generator client {
@@ -13,48 +8,61 @@ generator client {
 }
 
 model User {
-  id          String   @unique
-  name        String
-  email       String   @unique
-  role        String
-  department  String
-  manager     String
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  tickets     Ticket[]
-  comments     Comment[]
+  id              String @unique
+  name            String
+  email           String @unique
+  department      Department @relation(fields: [department_id], references: [id])
+  department_id   Int
+  manager         String
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+  tickets         Ticket[]
+  comments        Comment[]
 
   @@map("user")
 }
 
 model Ticket {
   id              String @id @default(uuid())
-  user User @relation(fields: [opened_by], references: [email])
+  user            User @relation(fields: [opened_by], references: [email])
   opened_by       String
   assigned_to     String
   title           String
   description     String
-  from_department String
-  to_department   String
+
+  from            Department @relation("fromDepartmentTo_Department", fields: [from_department], references: [id])
+  from_department Int
+  to              Department @relation("toDepartmentTo_Department", fields: [to_department], references: [id])
+  to_department   Int
+  
   approver        String
   approved        Boolean @default(false)
   status          String
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
-  comments Comment[]
+  comments        Comment[]
 
   @@map("ticket")
 }
 
 model Comment {
   id              String @id @default(uuid())
-  ticket Ticket @relation(fields: [ticket_id], references: [id])
+  ticket          Ticket @relation(fields: [ticket_id], references: [id])
   ticket_id       String
-  user User @relation(fields: [user_id], references: [id])
+  user            User @relation(fields: [user_id], references: [id])
   user_id         String
   content         String
   created_at      DateTime @default(now())
   updated_at      DateTime @updatedAt
 
   @@map("comment")
+}
+
+model Department {
+  id          Int @id @default(autoincrement())
+  department  String @unique
+  user        User[]
+  ticketFrom  Ticket[] @relation("fromDepartmentTo_Department")
+  ticketTo    Ticket[] @relation("toDepartmentTo_Department")
+  @@map("department")
 }

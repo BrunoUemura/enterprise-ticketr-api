@@ -1,10 +1,10 @@
-import TicketDTO from '@src/application/dto/TicketDTO';
+import CreateTicket from '@src/application/entity/CreateTicket';
 import ticketRepository from '@src/application/repository/TicketRepository';
 import { HttpStatusCodes } from '@src/util/enum/HttpStatusCodes';
 import NotFoundError from '@src/util/error/NotFoundError';
 
 export default class UpdateTicketService {
-  static async execute(id: string, data: TicketDTO) {
+  static async execute(id: string, data: CreateTicket) {
     const ticket = await ticketRepository.findFirst({
       where: { id },
     });

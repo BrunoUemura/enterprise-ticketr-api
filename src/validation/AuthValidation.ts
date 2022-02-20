@@ -1,7 +1,7 @@
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Request } from 'express';
 import UnauthorizedError from '@src/util/error/UnauthorizedError';
-import TokenPayloadDTO from '@src/application/dto/TokenPayloadDTO';
+import TokenPayloadDTO from '@src/application/entity/TokenPayload';
 
 export default class AuthValidation {
   static async execute(req: Request) {

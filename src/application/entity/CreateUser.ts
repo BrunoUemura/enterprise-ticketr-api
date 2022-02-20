@@ -1,9 +1,8 @@
-export default class UserDTO {
+export default class CreateUser {
   type?: string;
   id: string;
   name: string;
   email: string;
-  role: string;
-  department: string;
+  department_id: number;
   manager: string;
 }
