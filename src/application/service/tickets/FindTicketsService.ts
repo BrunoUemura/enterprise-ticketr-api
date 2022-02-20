@@ -3,6 +3,8 @@ import ticketRepository from '@src/application/repository/TicketRepository';
 
 export default class FindTicketsService {
   static async execute(): Promise<Ticket[]> {
-    return await ticketRepository.findMany();
+    return await ticketRepository.findMany({
+      include: { from: true, to: true, comments: true },
+    });
   }
 }

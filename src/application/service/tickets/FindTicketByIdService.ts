@@ -7,6 +7,7 @@ export default class FindTicketByIdService {
       where: {
         id,
       },
+      include: { from: true, to: true, comments: true },
     });
   }
 }

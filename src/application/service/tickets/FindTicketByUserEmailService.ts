@@ -7,6 +7,7 @@ export default class FindTicketByUserEmailService {
       where: {
         opened_by,
       },
+      include: { from: true, to: true, comments: true },
     });
   }
 }
